@@ -7,6 +7,6 @@ class DatabaseConnectionTest extends PHPUnit_Framework_TestCase
     {
         $database = (new DatabaseConnection)->connect();
 
-        $this->assertInstanceOf(PDO::class, $database, 'Database connection should provide a PDO');
+        $this->assertInstanceOf(mysqli::class, $database, 'Database connection should provide access to MySQL');
     }
 }

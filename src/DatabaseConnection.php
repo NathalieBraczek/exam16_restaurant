@@ -18,10 +18,10 @@ class DatabaseConnection
     /**
      * Create database connection
      *
-     * @return \PDO
+     * @return \mysqli
      */
     public function connect()
     {
-        return new \PDO('mysql://localhost/restaurant', 'root', '');
+        return mysqli_connect('localhost', 'root', '', 'restaurant');
     }
 }

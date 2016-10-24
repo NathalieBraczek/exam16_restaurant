@@ -1,0 +1,16 @@
+{
+    "name": "nathalie/exam16_restaurant",
+    "description": "Examensprojekt",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nathalie Braczek",
+            "email": "nathalie.braczek@gmx.de"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^5.6"
+    }
+}

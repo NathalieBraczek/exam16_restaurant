@@ -1,6 +1,9 @@
 <?php
 use Nathalie\Exam16\DatabaseConnection;
 
+/**
+ * Class DatabaseConnectionTest
+ */
 class DatabaseConnectionTest extends PHPUnit_Framework_TestCase
 {
     public function testConnection()

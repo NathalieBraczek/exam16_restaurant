@@ -9,17 +9,17 @@
 namespace Nathalie\Exam16;
 
 /**
- * Class ArticleRepo
+ * Class ProductsRepo
  *
  * @package Nathalie\Exam16
  */
-class ArticleRepo
+class ProductsRepo
 {
     /** @var  \mysqli */
     private $database;
 
     /**
-     * ArticleRepo constructor.
+     * ProductsRepo constructor.
      *
      * @param $database
      */
@@ -35,18 +35,7 @@ class ArticleRepo
      */
     public function getById($id)
     {
-        $sql    = "SELECT * FROM article WHERE Article_ID=" . (int)$id;
-        $result = mysqli_query($this->database, $sql, MYSQLI_ASSOC);
-
-        return $result->fetch_object();
-    }
-
-    /**
-     * @return object|\stdClass
-     */
-    public function getNewest()
-    {
-        $sql    = "SELECT * FROM article ORDER BY Article_Created DESC";
+        $sql    = "SELECT * FROM products WHERE Product_ID=" . (int)$id;
         $result = mysqli_query($this->database, $sql, MYSQLI_ASSOC);
 
         return $result->fetch_object();
@@ -57,7 +46,7 @@ class ArticleRepo
      */
     public function getAll()
     {
-        $sql    = "SELECT * FROM article ORDER BY Article_Created DESC";
+        $sql    = "SELECT * FROM products";
         $result = mysqli_query($this->database, $sql, MYSQLI_ASSOC);
 
         $all = [];

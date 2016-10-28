@@ -31,18 +31,65 @@ class ProductsTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(5, count($all));
     }
 
-    public function testGetByRestriction()
+    /**
+     * @return array
+     */
+    public function dataRestrictions()
     {
-        $productsRepo = new ProductsRepo($this->database);
-        $restriction  = $productsRepo->getByRestriction('vegan');
-
-        $this->assertEquals(1, count($restriction));
+        return [
+            'Vegan'       => ['Vegan', 1],
+            'Vegetarian'  => ['Vegetarian', 1],
+            'Normal'      => ['Normal', 3],
+            'Pescetarian' => ['Pescetarian', 0],
+        ];
     }
-    public function testGetByCategory()
+
+    /**
+     * @dataProvider dataRestrictions
+     *
+     * @param $restriction
+     * @param $quantity
+     */
+    public function testGetByRestriction($restriction, $quantity)
     {
         $productsRepo = new ProductsRepo($this->database);
-        $category  = $productsRepo->getByCategory('food');
+        $products     = $productsRepo->getByRestriction($restriction);
 
-        $this->assertEquals(3, count($category));
+        $this->assertEquals($quantity, count($products));
+
+        foreach ($products as $product)
+        {
+            $this->assertEquals($restriction, $product->Product_Restriction);
+        }
+    }
+
+    /**
+     * @return array
+     */
+    public function dataCategory()
+    {
+        return [
+            'Food'  => ['Food', 3],
+            'Drink' => ['Drink', 1],
+            'Menue' => ['Menue', 1],
+        ];
+    }
+
+    /**
+     * @param $category
+     * @param $quantity
+     * @dataProvider dataCategory
+     */
+    public function testGetByCategory($category, $quantity)
+    {
+        $productsRepo = new ProductsRepo($this->database);
+        $products     = $productsRepo->getByCategory($category);
+
+        $this->assertEquals($quantity, count($products));
+
+        foreach ($products as $product)
+        {
+            $this->assertEquals($category, $product->Product_Category);
+        }
     }
 }

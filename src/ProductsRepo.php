@@ -58,4 +58,44 @@ class ProductsRepo
 
         return $all;
     }
+
+    /**
+     * @param $restriction
+     *
+     * @return array
+     */
+    public function getByRestriction($restriction)
+    {
+        $sql    = "SELECT * FROM products WHERE Product_Restriction='" . $restriction . "'";
+        $result = mysqli_query($this->database, $sql, MYSQLI_ASSOC);
+
+        $all = [];
+
+        foreach ($result->fetch_all(MYSQLI_ASSOC) as $row)
+        {
+            $all[] = (object)$row;
+        }
+
+        return $all;
+    }
+
+    /**
+     * @param $category
+     *
+     * @return array
+     */
+    public function getByCategory($category)
+    {
+        $sql    = "SELECT * FROM products WHERE Product_Category='" . $category . "'";
+        $result = mysqli_query($this->database, $sql, MYSQLI_ASSOC);
+
+        $all = [];
+
+        foreach ($result->fetch_all(MYSQLI_ASSOC) as $row)
+        {
+            $all[] = (object)$row;
+        }
+
+        return $all;
+    }
 }

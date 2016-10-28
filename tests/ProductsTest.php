@@ -26,8 +26,23 @@ class ProductsTest extends PHPUnit_Framework_TestCase
     public function testGetAll()
     {
         $productsRepo = new ProductsRepo($this->database);
-        $all         = $productsRepo->getAll();
+        $all          = $productsRepo->getAll();
 
         $this->assertEquals(5, count($all));
+    }
+
+    public function testGetByRestriction()
+    {
+        $productsRepo = new ProductsRepo($this->database);
+        $restriction  = $productsRepo->getByRestriction('vegan');
+
+        $this->assertEquals(1, count($restriction));
+    }
+    public function testGetByCategory()
+    {
+        $productsRepo = new ProductsRepo($this->database);
+        $category  = $productsRepo->getByCategory('food');
+
+        $this->assertEquals(3, count($category));
     }
 }

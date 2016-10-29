@@ -96,9 +96,9 @@ class ProductsTest extends PHPUnit_Framework_TestCase
     public function testGetSpecial()
     {
         $productsRepo = new ProductsRepo($this->database);
-        $products     = $productsRepo->getSpecial();
+        $product     = $productsRepo->getSpecial();
 
-        $this->assertEquals(1, $products->Product_Special);
+        $this->assertEquals(1, $product->Product_Special);
 
     }
 }

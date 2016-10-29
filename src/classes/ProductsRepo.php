@@ -100,4 +100,15 @@ class ProductsRepo
 
         return $all;
     }
+
+    /**
+     * @return object|\stdClass
+     */
+    public function getSpecial()
+    {
+        $sql    = "SELECT * FROM products WHERE Product_Special=1";
+        $result = mysqli_query($this->database, $sql, MYSQLI_ASSOC);
+
+        return $result->fetch_object();
+    }
 }

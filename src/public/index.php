@@ -10,13 +10,16 @@
 
 use Nathalie\Exam16\ArticleRepo;
 use Nathalie\Exam16\DatabaseConnection;
+use Nathalie\Exam16\ProductsRepo;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 $databaseConnection = new DatabaseConnection();
 $database           = $databaseConnection->connect();
 $articleRepo        = new ArticleRepo($database);
-$articles           = $articleRepo->getAll();
+$articles           = $articleRepo->getNewest();
+$productsRepo       = new ProductsRepo($database);
+$special            = $productsRepo->getSpecial();
 ?>
 <html>
 <head>
@@ -24,13 +27,15 @@ $articles           = $articleRepo->getAll();
 </head>
 <body>
 <h1>Home</h1>
-<?php foreach ($articles as $article) : ?>
-    <article>
-        <h2><?php echo $article->Article_Title; ?></h2>
-        <p>
-            <?php echo $article->Article_Content; ?>
-        </p>
-    </article>
-<?php endforeach; ?>
+<article>
+    <h2><?php echo $articles->Article_Title; ?></h2>
+    <p>
+        <?php echo $articles->Article_Content; ?>
+    </p>
+</article>
+<div>
+    <h2><?php echo $special->Product_Title; ?></h2>
+    <p><?php echo $special->Product_Description; ?></p>
+</div>
 </body>
 </html>

@@ -20,7 +20,7 @@ class ArticleTest extends PHPUnit_Framework_TestCase
         $articleRepo = new ArticleRepo($this->database);
         $article     = $articleRepo->getById(1);
 
-        $this->assertEquals('Article One', $article->Article_Title);
+        $this->assertEquals('Oldest Article', $article->Article_Title);
     }
 
     public function testGetNewest()

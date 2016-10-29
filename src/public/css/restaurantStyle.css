@@ -1,8 +1,98 @@
 *{
     margin:0;
     padding:0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-
+h1,h2,h3{
+    font-weight: 900;
+}
 .cover{
     width: 100%;
+}
+.menu{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    justify-content: flex-end;
+    background-color: #720000;
+    list-style: none;
+    padding: 20px 0 20px 0;
+}
+.menu a{
+    color: white;
+    font-weight: 300;
+    margin-right: 40px;
+    font-size: 1.5em;
+    text-decoration: none;
+}
+.reservation a{
+    color: #720000;
+    background-color: white;
+    padding: 5px 10px 5px 10px;
+    text-shadow: 2px 2px 5px grey;
+    box-shadow: 2px 2px 5px grey;
+    font-weight: bold;
+    border-radius: 10px;
+}
+.reservation a:hover{
+    background-color: lightgray;
+}
+footer{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    justify-content: space-around;
+    background-color: #720000;
+    list-style: none;
+    padding: 15px 0 15px 0;
+    color: white;
+}
+footer a{
+    text-decoration: none;
+    color: white;
+}
+.content{
+    margin: 50px 100px 50px 100px;
+}
+.container{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: space-around;
+}
+#description{
+    margin-bottom: 50px;
+    text-align: center;
+}
+#description h1{
+    color: #720000;
+    font-size: 3em;
+}
+#newestarticle, #dailyspecial{
+    border: solid #720000;
+    width: 45%;
+    min-height: 300px;
+}
+
+.padding{
+    padding: 20px;
+}
+
+.title{
+    background-color: #720000;
+    color: white;
+    padding: 25px;
+    text-align: center;
 }

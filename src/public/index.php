@@ -22,27 +22,41 @@ $productsRepo       = new ProductsRepo($database);
 $special            = $productsRepo->getSpecial();
 ?>
 <html>
-<head>
-    <title>Home</title>
-    <link rel="stylesheet" type="text/css" href="css/restaurantStyle.css"/>
-</head>
-<body>
-<header><img class="cover" src="../img/Trumpcover.jpg" alt="Image of Trump"></header>
-<h1>The Trumpster</h1>
-<h2>The perfectly sexist and mexican-hating american Diner - Make Burgers great again!</h2>
-<div id="description">
-    <p>In this american Diner we serve delicious burgers to Americans - Note ONLY Americans - If you are Mexican we unkindly ask you to fuck off behind a wall!<br>
-    Even though it is not Trump-like all our burgers are biological and we know the name of every cow that sacrificied their life to our enjoyment.</p>
-</div>
-<article>
-    <h2><?php echo $articles->Article_Title; ?></h2>
-    <p>
-        <?php echo $articles->Article_Content; ?>
-    </p>
-</article>
-<div id="dailyspecial">
-    <h2><?php echo $special->Product_Title; ?></h2>
-    <p><?php echo $special->Product_Description; ?></p>
-</div>
-</body>
+    <head>
+        <title>Home</title>
+        <link rel="stylesheet" type="text/css" href="css/restaurantStyle.css"/>
+    </head>
+    <body>
+        <?php include "partial/header.php"; ?>
+        <div class="content">
+            <div id="description">
+                <h1>THE TRUMPSTER</h1>
+                <h2>The Perfectly Sexist and Mexican-hating American Diner - Make Burgers Great Again!</h2>
+
+                <p>In this american Diner we serve delicious burgers to Americans - Note <strong>ONLY</strong> Americans
+                    -
+                    If you are Mexican we unkindly ask you to fuck off behind a wall!<br>
+                    Even though it is not Trump-like all our burgers are biological and we know the name of every cow
+                    that sacrificied their life to our enjoyment. - Their name was Hillary</p>
+            </div>
+
+            <div class="container">
+
+                <div id="newestarticle">
+                    <h2 class="title">NEWS</h2>
+                    <h3  class="padding"><?php echo $articles->Article_Title; ?></h3>
+                    <p  class="padding">
+                        <?php echo $articles->Article_Content; ?>
+                    </p>
+                </div>
+
+                <div id="dailyspecial">
+                    <h2 class="title">DAILY SPECIAL</h2>
+                    <h3 class="padding"><?php echo $special->Product_Title; ?></h3>
+                    <p class="padding"><?php echo $special->Product_Description; ?></p>
+                </div>
+            </div>
+        </div>
+        <?php include "partial/footer.php"; ?>
+    </body>
 </html>

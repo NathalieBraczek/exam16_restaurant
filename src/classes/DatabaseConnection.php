@@ -1,10 +1,11 @@
 <?php
 /**
- * This file is part of the exam project.
+ * Examen 2016: Restaurant Project
  *
- * @since   1.0.0
- * @author  Nathalie Braczek <nathalie.braczek.gmx.de>
- * @license MIT, see LICENCE
+ * @since         1.0.0
+ * @author        Nathalie Braczek <nathalie.braczek.gmx.de>
+ * @copyright (C) 2016 Nathalie Braczek. All rights reserved.
+ * @license       MIT, see LICENCE
  */
 namespace Nathalie\Exam16;
 

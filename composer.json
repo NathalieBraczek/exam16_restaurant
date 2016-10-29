@@ -11,7 +11,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "Nathalie\\Exam16\\": "src/"
+      "Nathalie\\Exam16\\": "src/classes/"
     }
   },
   "require": {},

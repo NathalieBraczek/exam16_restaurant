@@ -35,27 +35,20 @@ $products = $productsRepo->getFiltered($category, $restriction);
 
             <form action="menues.php" method="post">
                 <label for="category">Category</label>
-                <select name="category" title="Category">
+                <select name="category" title="Category" onchange="getElementById('filter_button').click();">
                     <option value="">Any</option>
                     <?php foreach ($categories as $c) : ?>
-                        <option value="<?php echo $c; ?>"<?php if ($category == $c)
-                        {
-                            echo " selected";
-                        } ?>><?php echo $c; ?></option>
+                        <option value="<?php echo $c; ?>"<?php echo $category == $c ? " selected" : ""; ?>><?php echo $c; ?></option>
                     <?php endforeach; ?>
                 </select>
                 <label for="restriction">Restriction</label>
-                <select name="restriction" title="Restriction">
+                <select name="restriction" title="Restriction" onchange="getElementById('filter_button').click();">
                     <option value="">Don't care - if it's not Mexican!</option>
                     <?php foreach ($restrictions as $r) : ?>
-                        <option value="<?php echo $r; ?>"<?php if ($restriction == $r)
-                        {
-                            echo " selected";
-                        } ?>><?php echo $r; ?></option>
+                        <option value="<?php echo $r; ?>"<?php echo $restriction == $r ? " selected" : ""; ?>><?php echo $r; ?></option>
                     <?php endforeach; ?>
                 </select>
-                <button type="submit">Filter</button>
-                <button type="reset">Reset</button>
+                <button id="filter_button" type="submit">Filter</button>
             </form>
 
             <div class="container">

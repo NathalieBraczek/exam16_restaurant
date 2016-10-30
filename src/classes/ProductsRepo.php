@@ -111,4 +111,29 @@ class ProductsRepo
 
         return $result->fetch_object();
     }
+
+    /**
+     * @param $category
+     * @param $restiction
+     *
+     * @return array
+     */
+    public function getFiltered($category, $restiction)
+    {
+        $conditions   = ['1=1'];
+        $conditions[] = empty($category) ? "" : "Product_Category='" . $category . "'";
+        $conditions[] = empty($restiction) ? "" : "Product_Restriction='" . $restiction . "'";
+
+        $sql    = "SELECT * FROM products WHERE " . implode(' AND ', array_filter($conditions));
+        $result = mysqli_query($this->database, $sql, MYSQLI_ASSOC);
+
+        $all = [];
+
+        foreach ($result->fetch_all(MYSQLI_ASSOC) as $row)
+        {
+            $all[] = (object)$row;
+        }
+
+        return $all;
+    }
 }

@@ -101,4 +101,13 @@ class ProductsTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(1, $product->Product_Special);
 
     }
+
+    public function testGetFiltered()
+    {
+        $productsRepo = new ProductsRepo($this->database);
+        $products     = $productsRepo->getFiltered('Drink', 'Vegetarian');
+
+        $this->assertEquals(5, $products[0]->Product_ID);
+
+    }
 }

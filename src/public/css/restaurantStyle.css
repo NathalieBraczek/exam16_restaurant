@@ -6,6 +6,9 @@
 h1,h2,h3{
     font-weight: 900;
 }
+h1{
+    text-transform: uppercase;
+}
 .cover{
     width: 100%;
 }
@@ -80,10 +83,21 @@ footer a{
     color: #720000;
     font-size: 3em;
 }
-#newestarticle, #dailyspecial{
+.box{
     border: solid #720000;
     width: 45%;
     min-height: 300px;
+    margin: 1em 0;
+}
+.special, .special .price {
+    color: White;
+    background: #720000;
+}
+.price {
+    font-size: 300%;
+    font-weight: bold;
+    color: #720000;
+    float: right;
 }
 
 .padding{
@@ -95,4 +109,5 @@ footer a{
     color: white;
     padding: 25px;
     text-align: center;
+    text-transform: uppercase;
 }

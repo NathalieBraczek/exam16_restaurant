@@ -30,7 +30,7 @@ $special            = $productsRepo->getSpecial();
         <?php include "partial/header.php"; ?>
         <div class="content">
             <div id="description">
-                <h1>THE TRUMPSTER</h1>
+                <h1>The Trumpster</h1>
                 <h2>The Perfectly Sexist and Mexican-hating American Diner - Make Burgers Great Again!</h2>
 
                 <p>In this american Diner we serve delicious burgers to Americans - Note <strong>ONLY</strong> Americans
@@ -42,16 +42,16 @@ $special            = $productsRepo->getSpecial();
 
             <div class="container">
 
-                <div id="newestarticle">
-                    <h2 class="title">NEWS</h2>
+                <div class="box">
+                    <h2 class="title">News</h2>
                     <h3  class="padding"><?php echo $articles->Article_Title; ?></h3>
                     <p  class="padding">
                         <?php echo $articles->Article_Content; ?>
                     </p>
                 </div>
 
-                <div id="dailyspecial">
-                    <h2 class="title">DAILY SPECIAL</h2>
+                <div class="box">
+                    <h2 class="title">Daily Special</h2>
                     <h3 class="padding"><?php echo $special->Product_Title; ?></h3>
                     <p class="padding"><?php echo $special->Product_Description; ?></p>
                 </div>

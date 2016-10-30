@@ -13,7 +13,7 @@
 </header>
 <ul class="menu">
     <li><a href="index.php">Home</a></li>
-    <li><a href="#">Menue</a></li>
+    <li><a href="menues.php">Menue</a></li>
     <li><a href="#">Blog</a></li>
     <li><a href="#">About</a></li>
     <li class="reservation"><a href="#">Book a table</a></li>

@@ -55,11 +55,11 @@ class ArticleRepo
     }
 
     /**
-     * @return array
+     * @return array#
      */
-    public function getAll()
+    public function getAll($orderDirection = 'DESC')
     {
-        $sql    = "SELECT * FROM article ORDER BY Article_Created DESC";
+        $sql    = "SELECT * FROM article ORDER BY Article_Created $orderDirection";
         $result = mysqli_query($this->database, $sql, MYSQLI_ASSOC);
 
         $all = [];

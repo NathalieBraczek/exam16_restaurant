@@ -94,8 +94,8 @@ footer a{
     background: #720000;
 }
 .price {
-    font-size: 300%;
-    font-weight: bold;
+    font-size: 500%;
+    font-weight: bolder;
     color: #720000;
     float: right;
 }

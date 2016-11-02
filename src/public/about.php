@@ -8,9 +8,9 @@
  * @license       MIT, see LICENCE
  */
 
-use Nathalie\Exam16\ArticleRepo;
+
 use Nathalie\Exam16\DatabaseConnection;
-use Nathalie\Exam16\ProductsRepo;
+
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
@@ -61,7 +61,6 @@ $database           = $databaseConnection->connect();
                     </div>
 
             </div>
-        </div>
         <?php include "partial/footer.php"; ?>
     </body>
 </html>

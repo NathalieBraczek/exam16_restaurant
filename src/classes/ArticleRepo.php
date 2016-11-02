@@ -55,7 +55,9 @@ class ArticleRepo
     }
 
     /**
-     * @return array#
+     * @param string $orderDirection
+     *
+     * @return array
      */
     public function getAll($orderDirection = 'DESC')
     {

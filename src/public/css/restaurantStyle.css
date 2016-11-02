@@ -71,7 +71,7 @@ footer a{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: flex-start;
     align-content: space-around;
 }
@@ -85,10 +85,13 @@ footer a{
 }
 .box{
     border: solid #720000;
-    width: 45%;
+    min-width: 20%;
+    max-width: 45%;
     min-height: 300px;
     margin: 1em 0;
 }
+
+/*noinspection ALL*/
 .special, .special .price {
     color: White;
     background: #720000;

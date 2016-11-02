@@ -51,8 +51,8 @@ $titles = [
                     <?php if ($loginState == Session::LOGIN_STATE_FAILURE) : ?>
                         <p class="error">That was not right - are you a Mexican invader?</p>
                     <?php endif; ?>
-                    Password:
-                    <input type="password" name="password">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password">
                     <input type="hidden" name="action" value="login"/>
                     <button type="submit">Login</button>
                 <?php else : ?>

@@ -51,6 +51,8 @@ class Session
     }
 
     /**
+     * @param $password
+     *
      * @return int
      */
     public function login($password)

@@ -10,13 +10,28 @@
 
 
 use Nathalie\Exam16\DatabaseConnection;
+use Nathalie\Exam16\InformationRepo;
 
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 $databaseConnection = new DatabaseConnection();
 $database           = $databaseConnection->connect();
+$informationRepo    = new InformationRepo($database);
 
+$lines = explode("\n", $informationRepo->getByName('Opening Hours')->Information_Content);
+foreach ($lines as $i => $line)
+{
+    $columns = explode('|', $line, 2);
+    if (count($columns) > 1)
+    {
+        $lines[$i] = "<span class=\"days\">{$columns[0]}</span><span class=\"hours\">{$columns[1]}</span>";
+    }
+}
+$hours = implode('<br>', $lines);
+
+$phone = $informationRepo->getByName('Phone')->Information_Content;
+$phoneCondensed = str_replace(' ', '', $phone);
 ?>
 <html>
     <head>
@@ -30,6 +45,9 @@ $database           = $databaseConnection->connect();
 
                 <div class="box">
                     <h2 class="title">Opening Hours</h2>
+                    <p class="padding">
+                        <?php echo $hours; ?>
+                    </p>
                 </div>
 
 
@@ -58,6 +76,7 @@ $database           = $databaseConnection->connect();
                     </div>
                     <div class="box">
                         <h2 class="title">Call us</h2>
+                        <a href="callto:<?php echo $phoneCondensed; ?>"><?php echo $phone; ?></a>
                     </div>
 
             </div>

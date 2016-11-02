@@ -10,6 +10,7 @@
 
 use Nathalie\Exam16\ArticleRepo;
 use Nathalie\Exam16\DatabaseConnection;
+use Nathalie\Exam16\InformationRepo;
 use Nathalie\Exam16\ProductsRepo;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
@@ -20,6 +21,10 @@ $articleRepo        = new ArticleRepo($database);
 $articles           = $articleRepo->getNewest();
 $productsRepo       = new ProductsRepo($database);
 $special            = $productsRepo->getSpecial();
+$informationRepo    = new InformationRepo($database);
+
+$slogan      = $informationRepo->getByName('Slogan')->Information_Content;
+$description = $informationRepo->getByName('Description')->Information_Content;
 ?>
 <html>
     <head>
@@ -31,13 +36,9 @@ $special            = $productsRepo->getSpecial();
         <div class="content">
             <div id="description">
                 <h1>The Trumpster</h1>
-                <h2>The Perfectly Sexist and Mexican-hating American Diner - Make Burgers Great Again!</h2>
+                <h2><?php echo $slogan; ?></h2>
 
-                <p>In this american Diner we serve delicious burgers to Americans - Note <strong>ONLY</strong> Americans
-                    -
-                    If you are Mexican we unkindly ask you to fuck off behind a wall!<br>
-                    Even though it is not Trump-like all our burgers are biological and we know the name of every cow
-                    that sacrificied their life to our enjoyment. - Their name was Hillary</p>
+                <p><?php echo nl2br($description); ?></p>
             </div>
 
             <div class="container">

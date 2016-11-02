@@ -9,7 +9,7 @@
  */
 ?>
 <header>
-    <img class="cover" src="img/Trumpcover.jpg" alt="Image of Trump">
+    <a href="index.php"><img class="cover" src="img/Trumpcover.jpg" alt="Image of Trump"></a>
 </header>
 <ul class="menu">
     <li><a href="index.php">Home</a></li>

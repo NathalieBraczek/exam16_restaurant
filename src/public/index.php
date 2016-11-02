@@ -46,6 +46,8 @@ $special            = $productsRepo->getSpecial();
                     <h2 class="title">News</h2>
                     <h3  class="padding"><?php echo $articles->Article_Title; ?></h3>
                     <p  class="padding">
+                        <?php echo $articles->Article_Created; ?>
+                        <br>
                         <?php echo $articles->Article_Content; ?>
                     </p>
                 </div>

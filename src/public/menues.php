@@ -9,13 +9,13 @@
  */
 
 use Nathalie\Exam16\DatabaseConnection;
-use Nathalie\Exam16\ProductsRepo;
+use Nathalie\Exam16\ProductRepo;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 $databaseConnection = new DatabaseConnection();
 $database           = $databaseConnection->connect();
-$productsRepo       = new ProductsRepo($database);
+$productsRepo       = new ProductRepo($database);
 
 $restrictions = ['Vegan', 'Vegetarian', 'Pescetarian', 'Normal'];
 $categories   = ['Food', 'Drink', 'Menue'];

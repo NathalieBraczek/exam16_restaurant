@@ -118,3 +118,11 @@ footer a{
     text-align: center;
     text-transform: uppercase;
 }
+table.truncated tr{
+    max-height: 1em;
+}
+table.truncated td{
+    max-width: 50rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

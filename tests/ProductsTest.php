@@ -1,6 +1,6 @@
 <?php
 use Nathalie\Exam16\DatabaseConnection;
-use Nathalie\Exam16\ProductsRepo;
+use Nathalie\Exam16\ProductRepo;
 
 /**
  * Class ProductsTest
@@ -17,7 +17,7 @@ class ProductsTest extends PHPUnit_Framework_TestCase
 
     public function testGetById()
     {
-        $productsRepo = new ProductsRepo($this->database);
+        $productsRepo = new ProductRepo($this->database);
         $products     = $productsRepo->getById(1);
 
         $this->assertEquals('The Trump', $products->Product_Title);
@@ -25,7 +25,7 @@ class ProductsTest extends PHPUnit_Framework_TestCase
 
     public function testGetAll()
     {
-        $productsRepo = new ProductsRepo($this->database);
+        $productsRepo = new ProductRepo($this->database);
         $all          = $productsRepo->getAll();
 
         $this->assertEquals(5, count($all));
@@ -52,7 +52,7 @@ class ProductsTest extends PHPUnit_Framework_TestCase
      */
     public function testGetByRestriction($restriction, $quantity)
     {
-        $productsRepo = new ProductsRepo($this->database);
+        $productsRepo = new ProductRepo($this->database);
         $products     = $productsRepo->getByRestriction($restriction);
 
         $this->assertEquals($quantity, count($products));
@@ -82,7 +82,7 @@ class ProductsTest extends PHPUnit_Framework_TestCase
      */
     public function testGetByCategory($category, $quantity)
     {
-        $productsRepo = new ProductsRepo($this->database);
+        $productsRepo = new ProductRepo($this->database);
         $products     = $productsRepo->getByCategory($category);
 
         $this->assertEquals($quantity, count($products));
@@ -95,7 +95,7 @@ class ProductsTest extends PHPUnit_Framework_TestCase
 
     public function testGetSpecial()
     {
-        $productsRepo = new ProductsRepo($this->database);
+        $productsRepo = new ProductRepo($this->database);
         $product     = $productsRepo->getSpecial();
 
         $this->assertEquals(1, $product->Product_Special);
@@ -104,7 +104,7 @@ class ProductsTest extends PHPUnit_Framework_TestCase
 
     public function testGetFiltered()
     {
-        $productsRepo = new ProductsRepo($this->database);
+        $productsRepo = new ProductRepo($this->database);
         $products     = $productsRepo->getFiltered('Drink', 'Vegetarian');
 
         $this->assertEquals(5, $products[0]->Product_ID);

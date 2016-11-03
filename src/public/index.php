@@ -11,7 +11,7 @@
 use Nathalie\Exam16\ArticleRepo;
 use Nathalie\Exam16\DatabaseConnection;
 use Nathalie\Exam16\InformationRepo;
-use Nathalie\Exam16\ProductsRepo;
+use Nathalie\Exam16\ProductRepo;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
@@ -19,7 +19,7 @@ $databaseConnection = new DatabaseConnection();
 $database           = $databaseConnection->connect();
 $articleRepo        = new ArticleRepo($database);
 $articles           = $articleRepo->getNewest();
-$productsRepo       = new ProductsRepo($database);
+$productsRepo       = new ProductRepo($database);
 $special            = $productsRepo->getSpecial();
 $informationRepo    = new InformationRepo($database);
 

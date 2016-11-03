@@ -1,5 +1,5 @@
 <?php
-use Nathalie\Exam16\BoardsRepo;
+use Nathalie\Exam16\BoardRepo;
 use Nathalie\Exam16\DatabaseConnection;
 
 /**
@@ -17,7 +17,7 @@ class BoardsTest extends PHPUnit_Framework_TestCase
 
     public function testGetById()
     {
-        $boardsRepo = new BoardsRepo($this->database);
+        $boardsRepo = new BoardRepo($this->database);
         $board      = $boardsRepo->getById(1);
 
         $this->assertEquals(2, $board->Boards_Seats);
@@ -25,7 +25,7 @@ class BoardsTest extends PHPUnit_Framework_TestCase
 
     public function testGetAll()
     {
-        $boardsRepo = new BoardsRepo($this->database);
+        $boardsRepo = new BoardRepo($this->database);
         $all        = $boardsRepo->getAll();
 
         $this->assertEquals(10, count($all));
@@ -33,7 +33,7 @@ class BoardsTest extends PHPUnit_Framework_TestCase
 
     public function testGetOccupied()
     {
-        $boardsRepo = new BoardsRepo($this->database);
+        $boardsRepo = new BoardRepo($this->database);
         $boards     = $boardsRepo->getOccupied('2016-10-31', '19:00');
 
         $this->assertEquals(1, count($boards));
@@ -42,7 +42,7 @@ class BoardsTest extends PHPUnit_Framework_TestCase
 
     public function testGetAvailable()
     {
-        $boardsRepo = new BoardsRepo($this->database);
+        $boardsRepo = new BoardRepo($this->database);
         $boards     = $boardsRepo->getAvailable('2016-10-31', '19:00', 2);
 
         $this->assertEquals(9, count($boards));

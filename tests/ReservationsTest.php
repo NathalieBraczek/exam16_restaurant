@@ -1,6 +1,6 @@
 <?php
 use Nathalie\Exam16\DatabaseConnection;
-use Nathalie\Exam16\ReservationsRepo;
+use Nathalie\Exam16\ReservationRepo;
 
 /**
  * Class ReservationsTest
@@ -17,7 +17,7 @@ class ReservationsTest extends PHPUnit_Framework_TestCase
 
     public function testGetById()
     {
-        $reservationsRepo = new ReservationsRepo($this->database);
+        $reservationsRepo = new ReservationRepo($this->database);
         $reservations     = $reservationsRepo->getById(1);
 
         $this->assertEquals('Max Mustermann', $reservations->Reservations_Name);
@@ -25,7 +25,7 @@ class ReservationsTest extends PHPUnit_Framework_TestCase
 
     public function testGetAll()
     {
-        $reservationsRepo = new ReservationsRepo($this->database);
+        $reservationsRepo = new ReservationRepo($this->database);
         $all         = $reservationsRepo->getAll();
 
         $this->assertEquals(1, count($all));
@@ -33,7 +33,7 @@ class ReservationsTest extends PHPUnit_Framework_TestCase
 
     public function testGetByDateTimeWithBothParameters()
     {
-        $reservationsRepo = new ReservationsRepo($this->database);
+        $reservationsRepo = new ReservationRepo($this->database);
         $reservations     = $reservationsRepo->getByDateTime('2016-10-31', '19:00');
 
         $this->assertEquals(1, count($reservations));
@@ -42,7 +42,7 @@ class ReservationsTest extends PHPUnit_Framework_TestCase
 
     public function testGetByDateTimeWithJustDateParameter()
     {
-        $reservationsRepo = new ReservationsRepo($this->database);
+        $reservationsRepo = new ReservationRepo($this->database);
         $reservations     = $reservationsRepo->getByDateTime('2016-10-31');
 
         $this->assertEquals(1, count($reservations));
@@ -51,7 +51,7 @@ class ReservationsTest extends PHPUnit_Framework_TestCase
 
     public function testGetByDateTimeWithNoReservation()
     {
-        $reservationsRepo = new ReservationsRepo($this->database);
+        $reservationsRepo = new ReservationRepo($this->database);
         $reservations     = $reservationsRepo->getByDateTime('2016-10-30', '19:00');
 
         $this->assertEquals(0, count($reservations));

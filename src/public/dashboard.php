@@ -7,6 +7,11 @@
  * @copyright (C) 2016 Nathalie Braczek. All rights reserved.
  * @license       MIT, see LICENCE
  */
+use Nathalie\Exam16\Session;
+
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+(new Session)->assertValidSession();
 ?>
 <html>
     <head>

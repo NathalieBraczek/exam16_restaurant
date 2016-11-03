@@ -81,4 +81,12 @@ abstract class Repository
     {
         return $this->getMultiple("SELECT * FROM {$this->table}");
     }
+
+    /**
+     * @param $id
+     */
+    public function delete($id)
+    {
+
+    }
 }

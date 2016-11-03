@@ -8,9 +8,7 @@
  * @license       MIT, see LICENCE
  */
 
-
 namespace Nathalie\Exam16;
-
 
 /**
  * Class Session

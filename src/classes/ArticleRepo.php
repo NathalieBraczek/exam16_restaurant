@@ -15,43 +15,17 @@ namespace Nathalie\Exam16;
  *
  * @package Nathalie\Exam16
  */
-class ArticleRepo
+class ArticleRepo extends Repository
 {
-    /** @var  \mysqli */
-    private $database;
-
-    /**
-     * ArticleRepo constructor.
-     *
-     * @param $database
-     */
-    public function __construct($database)
-    {
-        $this->database = $database;
-    }
-
-    /**
-     * @param integer $id
-     *
-     * @return object|\stdClass
-     */
-    public function getById($id)
-    {
-        $sql    = "SELECT * FROM article WHERE Article_ID=" . (int)$id;
-        $result = mysqli_query($this->database, $sql, MYSQLI_ASSOC);
-
-        return $result->fetch_object();
-    }
+    protected $table = 'article';
+    protected $prefix = 'Article_';
 
     /**
      * @return object|\stdClass
      */
     public function getNewest()
     {
-        $sql    = "SELECT * FROM article ORDER BY Article_Created DESC";
-        $result = mysqli_query($this->database, $sql, MYSQLI_ASSOC);
-
-        return $result->fetch_object();
+        return $this->getOne("SELECT * FROM {$this->table} ORDER BY {$this->prefix}Created DESC");
     }
 
     /**
@@ -61,17 +35,6 @@ class ArticleRepo
      */
     public function getAll($orderDirection = 'DESC')
     {
-        $sql    = "SELECT * FROM article ORDER BY Article_Created $orderDirection";
-        $result = mysqli_query($this->database, $sql, MYSQLI_ASSOC);
-
-        $all = [];
-
-        foreach ($result->fetch_all(MYSQLI_ASSOC) as $row)
-        {
-            $all[] = (object)$row;
-        }
-
-        return $all;
+        return $this->getMultiple("SELECT * FROM {$this->table} ORDER BY {$this->prefix}Created $orderDirection");
     }
-
 }

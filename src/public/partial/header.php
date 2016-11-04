@@ -16,5 +16,5 @@
     <li><a href="menues.php">Menue</a></li>
     <li><a href="articles.php">Blog</a></li>
     <li><a href="contacts.php">About</a></li>
-    <li class="reservation"><a href="#">Book a table</a></li>
+    <li class="reservation"><a href="edit.php?entity=reservation">Book a table</a></li>
 </ul>

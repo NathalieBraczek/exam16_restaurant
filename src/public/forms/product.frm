@@ -1,4 +1,16 @@
 <?php
+/**
+ * Examen 2016: Restaurant Project
+ *
+ * @since         1.0.0
+ * @author        Nathalie Braczek <nathalie.braczek.gmx.de>
+ * @copyright (C) 2016 Nathalie Braczek. All rights reserved.
+ * @license       MIT, see LICENCE
+ *
+ * @var object $preset The initial values for the form
+ * @var string $entity The name of the entity
+ */
+
 if (empty($preset))
 {
     $preset = (object)[
@@ -16,11 +28,11 @@ $restrictions = ['Vegan', 'Vegetarian', 'Pescetarian', 'Normal'];
 $categories   = ['Food', 'Drink', 'Menue'];
 ?>
 
-
-<form action="...">
+<form action="edit.php?action=save&amp;entity=<?php echo $entity; ?>" method="post" enctype="application/x-www-form-urlencoded">
     <label for="id">ID:</label>
     <br>
-    <input type="text" disabled id="id" name="Product_ID" value="<?php echo $preset->Product_ID; ?>">
+    <input type="hidden" id="id" name="Product_ID" value="<?php echo $preset->Product_ID; ?>">
+    <?php echo $preset->Product_ID; ?>
     <br>
     <br>
     <label for="title">Title:</label>
@@ -30,9 +42,7 @@ $categories   = ['Food', 'Drink', 'Menue'];
     <br>
     <label for="description">Description:</label>
     <br>
-    <textarea id="description" name="Product-Description">
-        <?php echo $preset->Product_Description; ?>
-    </textarea>
+    <textarea id="description" name="Product-Description"><?php echo $preset->Product_Description; ?></textarea>
     <br>
     <label for="price">Price:</label>
     <br>
@@ -59,4 +69,5 @@ $categories   = ['Food', 'Drink', 'Menue'];
     <br>
     <br>
     <button type="submit">Save</button>
+    <a href="list.php?entity=product">Cancel</a>
 </form>

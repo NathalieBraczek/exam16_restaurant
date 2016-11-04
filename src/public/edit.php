@@ -30,7 +30,26 @@ $className = __NAMESPACE__ . '\\' . ucfirst($entity) . 'Repo';
 /** @var Repository $repo */
 $repo = new $className($database);
 
-$preset = $repo->getById($id);
+$message = '';
+
+$action = $_REQUEST['action'] ?? null;
+if ($action == 'save')
+{
+    if ($repo->save($_POST))
+    {
+        header("Location: list.php?entity=$entity");
+        die;
+    }
+    else
+    {
+        $message = 'You must be a Democrat. Retry!';
+        $preset  = (object)$_POST;
+    }
+}
+else
+{
+    $preset = $repo->getById($id);
+}
 ?>
 <html>
     <head>
@@ -40,9 +59,14 @@ $preset = $repo->getById($id);
     <body>
         <?php include "partial/header.php"; ?>
         <div class="padding">
-            <?php /** @noinspection PhpIncludeInspection */
-            include "forms/{$entity}.frm"; ?>
-            <pre><?php print_r($preset); ?></pre>
+            <?php
+            if (!empty($message))
+            {
+                echo "<p class=\"error\">{$message}</p>";
+            }
+            /** @noinspection PhpIncludeInspection */
+            include "forms/{$entity}.frm";
+            ?>
         </div>
         <?php include "partial/footer.php"; ?>
 

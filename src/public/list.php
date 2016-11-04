@@ -25,6 +25,8 @@ if (!isset($_REQUEST['entity']))
 
 $entity    = $_REQUEST['entity'];
 $className = __NAMESPACE__ . '\\' . ucfirst($entity) . 'Repo';
+
+/** @var Repository $repo */
 $repo      = new $className($database);
 
 $action    = $_REQUEST['action'] ?? null;
@@ -34,8 +36,8 @@ if ($action == 'delete' && isset($_REQUEST['id']))
 }
 
 $items     = $repo->getAll();
-$headers   = array_keys(get_object_vars($items[0]));
-$idField   = ucfirst($entity) . '_ID';
+$headers   = array_keys(get_object_vars(reset($items)));
+$idField   = $repo->getPrefix() . 'ID';
 ?>
 <html>
     <head>
@@ -44,11 +46,12 @@ $idField   = ucfirst($entity) . '_ID';
     </head>
     <body>
         <?php include "partial/header.php"; ?>
+        <a class="button" href="dashboard.php">Back</a>
         <a class="button" href="edit.php?entity=<?php echo $entity; ?>">Add new</a>
         <table class="truncated padding">
             <thead>
                 <tr>
-                    <th colspan="2">Actions</th>
+                    <th colspan="2" class="action">Actions</th>
                     <?php foreach ($headers as $header) : ?>
                         <th><?php echo $header; ?></th>
                     <?php endforeach; ?>

@@ -37,7 +37,7 @@ class ReservationsTest extends PHPUnit_Framework_TestCase
         $reservations     = $reservationsRepo->getByDateTime('2016-10-31', '19:00');
 
         $this->assertEquals(1, count($reservations));
-        $this->assertEquals('Max Mustermann', $reservations[0]->Reservations_Name);
+        $this->assertEquals('Max Mustermann', reset($reservations)->Reservations_Name);
     }
 
     public function testGetByDateTimeWithJustDateParameter()
@@ -46,7 +46,7 @@ class ReservationsTest extends PHPUnit_Framework_TestCase
         $reservations     = $reservationsRepo->getByDateTime('2016-10-31');
 
         $this->assertEquals(1, count($reservations));
-        $this->assertEquals('Max Mustermann', $reservations[0]->Reservations_Name);
+        $this->assertEquals('Max Mustermann', reset($reservations)->Reservations_Name);
     }
 
     public function testGetByDateTimeWithNoReservation()

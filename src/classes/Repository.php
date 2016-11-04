@@ -34,6 +34,14 @@ abstract class Repository
     }
 
     /**
+     * @return string
+     */
+    public function getPrefix()
+    {
+        return $this->prefix;
+    }
+
+    /**
      * @param $sql
      *
      * @return object
@@ -58,7 +66,7 @@ abstract class Repository
 
         foreach ($result->fetch_all(MYSQLI_ASSOC) as $row)
         {
-            $all[] = (object)$row;
+            $all[$row[$this->prefix . 'ID']] = (object)$row;
         }
 
         return $all;
@@ -84,9 +92,70 @@ abstract class Repository
 
     /**
      * @param $id
+     *
+     * @return bool|\mysqli_result
      */
     public function delete($id)
     {
+        return mysqli_query($this->database, "DELETE FROM {$this->table} WHERE {$this->prefix}ID=" . (int)$id);
+    }
 
+    /**
+     * @param array $entity
+     *
+     * @return int
+     */
+    public function save($entity)
+    {
+        $cleaned = [];
+        foreach ($entity as $key => $value)
+        {
+            if (preg_match('~^' . $this->prefix . '\w+$~', $key))
+            {
+                $cleaned[$key] = mysqli_escape_string($this->database, $value);
+            }
+        }
+        if (empty($cleaned["{$this->prefix}ID"]))
+        {
+            return $this->insert($cleaned);
+        }
+        return $this->update($cleaned);
+    }
+
+    /**
+     * @param $entity
+     *
+     * @return int
+     */
+    private function insert($entity)
+    {
+        unset($entity["{$this->prefix}ID"]);
+
+        $columns = implode(',', array_keys($entity));
+        $values = "'" . implode("','", array_values($entity)) . "'";
+
+        mysqli_query($this->database, "INSERT INTO {$this->table} ({$columns}) VALUES ($values)");
+        return mysqli_insert_id($this->database);
+    }
+
+    /**
+     * @param $entity
+     *
+     * @return int
+     */
+    private function update($entity)
+    {
+        $id = (int)$entity["{$this->prefix}ID"];
+        unset($entity["{$this->prefix}ID"]);
+
+        $assignments = [];
+        foreach ($entity as $key => $value)
+        {
+            $assignments[] = "$key='$value'";
+        }
+        $assignments = implode(',', $assignments);
+
+        mysqli_query($this->database, "UPDATE {$this->table} SET $assignments WHERE {$this->prefix}ID=$id");
+        return $id;
     }
 }

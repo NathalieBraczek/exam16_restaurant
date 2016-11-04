@@ -38,7 +38,6 @@ h1{
     text-shadow: 2px 2px 5px grey;
     box-shadow: 2px 2px 5px grey;
     font-weight: bold;
-    border-radius: 10px;
 }
 .reservation a:hover{
     background-color: lightgray;
@@ -118,11 +117,41 @@ footer a{
     text-align: center;
     text-transform: uppercase;
 }
-table.truncated tr{
-    max-height: 1em;
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+table.truncated thead tr{
+    background-color: #720000;
+    color: White;
+}
+table.truncated th{
+    padding: .5rem;
+    text-align: left;
+}
+table.truncated tr:nth-child(2n){
+    background-color: #FDD;
 }
 table.truncated td{
+    padding: .5rem;
     max-width: 50rem;
     overflow: hidden;
     text-overflow: ellipsis;
+    border: 1px solid #720000;
+}
+table.truncated td.action{
+    border-width: 1px 0;
+}
+table.truncated .action{
+    text-align: center;
+}
+button, a.button{
+   /* border-radius: .5em; */
+    background-color: #720000;
+    color: White;
+    font-weight: bold;
+    padding: .5rem 1.5rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: block;
 }

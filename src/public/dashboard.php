@@ -22,12 +22,18 @@ require_once __DIR__ . '/../../vendor/autoload.php';
         <?php include "partial/header.php"; ?>
 <div class="box center">
     <h1 class="title">Welcome Master Trumpster!</h1>
-    <button>New blogpost</button>
-    <button>View reservations</button>
-    <button>Change daily special</button>
-    <button>Edit Company Description</button>
-    <button>Edit opening hours</button>
-    <button>Edit contact information</button>
+    <br>
+    <a class="button" href="#">Manage Daily Special</a>
+    <br>
+    <a class="button" href="http://localhost/exam16/public/list.php?entity=article">Manage Articles</a>
+    <br>
+    <a class="button" href="http://localhost/exam16/public/list.php?entity=reservation">Manage Reservations</a>
+    <br>
+    <a class="button" href="http://localhost/exam16/public/list.php?entity=information">Manage Company Information</a>
+    <br>
+    <a class="button" href="http://localhost/exam16/public/list.php?entity=product">Manage Products</a>
+    <br>
+    <a class="button" href="http://localhost/exam16/public/list.php?entity=table">Manage Tables</a>
 </div>
 <?php include "partial/footer.php"; ?>
 </body>

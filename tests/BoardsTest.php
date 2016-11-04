@@ -37,7 +37,7 @@ class BoardsTest extends PHPUnit_Framework_TestCase
         $boards     = $boardsRepo->getOccupied('2016-10-31', '19:00');
 
         $this->assertEquals(1, count($boards));
-        $this->assertEquals(2, $boards[0]->Boards_ID);
+        $this->assertEquals(2, reset($boards)->Boards_ID);
     }
 
     public function testGetAvailable()

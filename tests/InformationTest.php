@@ -26,7 +26,7 @@ class InformationTest extends PHPUnit_Framework_TestCase
     public function testGetAll()
     {
         $informationRepo = new InformationRepo($this->database);
-        $all             = $informationRepo->getAll();
+        $all             = array_values($informationRepo->getAll());
 
         $this->assertEquals(5, count($all));
         $this->assertEquals('Slogan', $all[0]->Information_Name);

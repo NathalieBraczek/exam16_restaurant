@@ -8,7 +8,7 @@
  * @license       MIT, see LICENCE
  */
 ?>
- <footer>
+ <footer class="container">
      <p>©2016 Nathalie Braczek</p>
      <a href="impressum.php">Impressum</a>
  </footer>

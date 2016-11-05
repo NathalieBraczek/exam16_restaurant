@@ -46,8 +46,11 @@ $idField   = $repo->getPrefix() . 'ID';
     </head>
     <body>
         <?php include "partial/header.php"; ?>
-        <a class="button" href="dashboard.php">Back</a>
-        <a class="button" href="edit.php?entity=<?php echo $entity; ?>">Add new</a>
+        <div class="buttons">
+            <a class="button" href="dashboard.php">Back</a>
+            <a class="button" href="edit.php?entity=<?php echo $entity; ?>">Add new</a>
+            <a class="button" href="login.php?action=logout">Logout</a>
+        </div>
         <table class="truncated padding">
             <thead>
                 <tr>

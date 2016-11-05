@@ -3,6 +3,10 @@
     padding:0;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+html, body{
+    height: 100%;
+    margin-bottom: 1px;
+}
 h1,h2,h3{
     font-weight: 900;
 }
@@ -43,16 +47,13 @@ h1{
     background-color: lightgray;
 }
 footer{
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
+    /*position: fixed;*/
+    /*bottom: 0;*/
+    /*width: 100%;*/
     -webkit-flex-flow: row wrap;
-    justify-content: space-around;
     background-color: #720000;
     list-style: none;
-    padding: 15px 0 15px 0;
+    padding: 1rem 5rem;
     color: white;
 }
 footer a{
@@ -70,8 +71,8 @@ footer a{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: flex-start;
+    justify-content: space-between;
+    align-items: stretch;
     align-content: space-around;
 }
 #description{
@@ -84,8 +85,9 @@ footer a{
 }
 .box{
     border: solid #720000;
-    min-width: 20%;
-    max-width: 45%;
+    /*min-width: 20%;*/
+    /*max-width: 45%;*/
+    width: 48%;
     min-height: 300px;
     margin: 1em 0;
 }
@@ -141,12 +143,12 @@ table.truncated td{
 }
 table.truncated td.action{
     border-width: 1px 0;
+    width: 5rem;
 }
 table.truncated .action{
     text-align: center;
 }
 button, a.button{
-   /* border-radius: .5em; */
     background-color: #720000;
     color: White;
     font-weight: bold;
@@ -154,4 +156,21 @@ button, a.button{
     text-decoration: none;
     text-transform: uppercase;
     display: block;
+    border: 1px solid White;
+    box-shadow: 0 0 3px #720000;
+}
+.buttons{
+    padding-left: .5rem;
+}
+.buttons a.button{
+    background-color: White;
+    color: #720000;
+    display: inline;
+    border: 1px solid #720000;
+    box-shadow: 0 0 3px White;
+}
+div.buttons {
+    position: relative;
+    top: -2.7em;
+    max-width: 50%;
 }

@@ -62,4 +62,16 @@ class ProductRepo extends Repository
 
         return $this->getMultiple("SELECT * FROM products WHERE " . implode(' AND ', array_filter($conditions)));
     }
+
+    /**
+     * @param $id
+     */
+    public function setSpecial($id)
+    {
+        $sql = "UPDATE products SET Product_Special=0";
+        mysqli_query($this->database, $sql);
+
+        $sql = "UPDATE products SET Product_Special=1 WHERE Product_ID=" . (int)$id;
+        mysqli_query($this->database, $sql);
+    }
 }

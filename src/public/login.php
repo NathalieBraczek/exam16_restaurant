@@ -15,7 +15,7 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 $session    = new Session;
 $loginState = $session->getLoginState();
 
-switch (isset($_POST['action']) ? $_POST['action'] : '')
+switch (isset($_REQUEST['action']) ? $_REQUEST['action'] : '')
 {
     case 'login':
         $loginState = $session->login($_POST['password']);

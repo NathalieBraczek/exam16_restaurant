@@ -18,7 +18,7 @@ namespace Nathalie\Exam16;
 abstract class Repository
 {
     /** @var  \mysqli */
-    private $database;
+    protected $database;
 
     protected $table;
     protected $prefix;

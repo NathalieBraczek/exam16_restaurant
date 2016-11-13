@@ -110,7 +110,7 @@ abstract class Repository
         $cleaned = [];
         foreach ($entity as $key => $value)
         {
-            if (preg_match('~^' . $this->prefix . '\w+$~', $key))
+            if (strpos($key, $this->prefix) === 0)
             {
                 $cleaned[$key] = mysqli_escape_string($this->database, $value);
             }

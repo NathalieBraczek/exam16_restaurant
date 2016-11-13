@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2016 at 05:08 PM
+-- Generation Time: Nov 11, 2016 at 10:15 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -39,7 +39,7 @@ CREATE TABLE `article` (
 
 INSERT INTO `article` (`Article_ID`, `Article_Title`, `Article_Created`, `Article_Content`) VALUES
 (1, 'Oldest Article', '2016-10-01', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.'),
-(2, 'Newest Article', '2016-10-08', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.');
+(2, 'Newest Article', '2016-10-08', 'Edit: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.');
 
 -- --------------------------------------------------------
 
@@ -71,19 +71,6 @@ INSERT INTO `boards` (`Boards_ID`, `Boards_Seats`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comments`
---
-
-CREATE TABLE `comments` (
-  `Comments_ID` int(11) NOT NULL,
-  `Comments_Username` varchar(64) NOT NULL,
-  `Comments_Rating` int(11) NOT NULL,
-  `Comments_Comment` mediumtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `information`
 --
 
@@ -100,7 +87,7 @@ CREATE TABLE `information` (
 
 INSERT INTO `information` (`Information_ID`, `Information_Name`, `Information_Content`, `Information_Hint`) VALUES
 (1, 'Slogan', 'The Perfectly Sexist and Mexican-hating American Diner - Make Burgers Great Again!', ''),
-(2, 'Description', 'In this american Diner we serve delicious burgers to Americans - Note ONLY Americans - If you are Mexican we unkindly ask you to fuck off behind a wall!\r\nEven though it is not Trump-like all our burgers are biological and we know the name of every cow that sacrificied their life to our enjoyment. - Their name was Hillary', ''),
+(2, 'Description', 'In this american Diner we serve delicious burgers to Americans - Note <strong>ONLY</strong> Americans - If you are Mexican we unkindly ask you to fuck off behind a wall!\r\nEven though it is not Trump-like all our burgers are biological and we know the name of every cow that sacrificied their life to our enjoyment. - Their name was Hillary', ''),
 (3, 'Opening Hours', 'Mon-Fri| 4pm-4am\r\nSat| 2pm-6am', 'Separate columns with the pipe-symbol ( | )'),
 (4, 'Phone', '+12 34567891', ''),
 (5, 'Email', 'nathalie.braczek@gmx.de', 'This email-address is used for the contactform');
@@ -118,21 +105,19 @@ CREATE TABLE `products` (
   `Product_Price` float NOT NULL,
   `Product_Special` tinyint(1) NOT NULL,
   `Product_Restriction` enum('Vegetarian','Vegan','Pesketarian','Normal') NOT NULL,
-  `Product_Category` enum('Food','Drink','Menue','') NOT NULL,
-  `Product_Votes` int(11) NOT NULL,
-  `Product_Total` int(11) NOT NULL
+  `Product_Category` enum('Food','Drink','Menue','') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`Product_ID`, `Product_Title`, `Product_Description`, `Product_Price`, `Product_Special`, `Product_Restriction`, `Product_Category`, `Product_Votes`, `Product_Total`) VALUES
-(1, 'The Trump', 'A classic Burger with 200g organic beef and whole grain patty.', 7.99, 0, 'Normal', 'Food', 0, 0),
-(2, 'The grumpy old man', 'A very spicy burger with 200g organic beef and whole grain patty', 7.99, 0, 'Normal', 'Food', 0, 0),
-(3, 'The liar', 'It looks like beef, it tastes like beef, but it is 100% vegan.', 9.99, 1, 'Vegan', 'Food', 0, 0),
-(4, 'The Mexican', 'An empty plate for our little costumers - Just take some food from your parents', 0, 0, 'Normal', 'Menue', 0, 0),
-(5, 'Small Softdrink', 'Choose between Cola, Fanta and Sprite, 0.5l', 2.99, 0, 'Vegetarian', 'Drink', 0, 0);
+INSERT INTO `products` (`Product_ID`, `Product_Title`, `Product_Description`, `Product_Price`, `Product_Special`, `Product_Restriction`, `Product_Category`) VALUES
+(1, 'The Trump', 'A classic Burger with 200g organic beef and whole grain patty.', 7.99, 0, 'Normal', 'Food'),
+(2, 'The grumpy old man', 'A very spicy burger with 200g organic beef and whole grain patty', 7.99, 0, 'Normal', 'Food'),
+(3, 'The liar', 'It looks like beef, it tastes like beef, but it is 100% vegan.', 9.99, 0, 'Vegan', 'Food'),
+(4, 'The Mexican', 'An empty plate for our little costumers - Just take some food from your parents', 0, 1, 'Normal', 'Menue'),
+(5, 'Small Softdrink', 'Choose between Cola, Fanta and Sprite, 0.5l', 2.99, 0, 'Vegetarian', 'Drink');
 
 -- --------------------------------------------------------
 
@@ -175,12 +160,6 @@ ALTER TABLE `boards`
   ADD PRIMARY KEY (`Boards_ID`);
 
 --
--- Indexes for table `comments`
---
-ALTER TABLE `comments`
-  ADD PRIMARY KEY (`Comments_ID`);
-
---
 -- Indexes for table `information`
 --
 ALTER TABLE `information`
@@ -214,11 +193,6 @@ ALTER TABLE `article`
 --
 ALTER TABLE `boards`
   MODIFY `Boards_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
---
--- AUTO_INCREMENT for table `comments`
---
-ALTER TABLE `comments`
-  MODIFY `Comments_ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `information`
 --

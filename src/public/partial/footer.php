@@ -9,6 +9,6 @@
  */
 ?>
  <footer class="container">
-     <p>©2016 Nathalie Braczek</p>
+     <p>&copy;2016 Nathalie Braczek</p>
      <a href="impressum.php">Impressum</a>
  </footer>

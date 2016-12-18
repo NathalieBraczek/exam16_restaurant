@@ -28,6 +28,7 @@ $products = $productsRepo->getFiltered($category, $restriction);
     <head>
         <title>Menues</title>
         <link rel="stylesheet" type="text/css" href="css/restaurantStyle.css"/>
+        <link rel="stylesheet" type="text/css" href="css/rating.css"/>
     </head>
     <body>
         <?php include "partial/header.php"; ?>
@@ -60,6 +61,18 @@ $products = $productsRepo->getFiltered($category, $restriction);
                             <?php echo $product->Product_Description; ?>
                             <span class="price">$ <?php echo number_format($product->Product_Price, 2); ?></span>
                         </p>
+                        <?php $form = 'rating-form-' . $product->Product_ID; ?>
+                        <form action="menues.php" method="post" id="<?php echo $form; ?>" class="padding">
+                            <fieldset class="rating">
+                                <legend>Please rate:</legend>
+                                <input type="radio" id="star5-<?php echo $product->Product_ID; ?>" name="rating" value="5" onclick="document.getElementById('<?php echo $form; ?>').submit();"/><label for="star5-<?php echo $product->Product_ID; ?>" title="Rocks!">5 stars</label>
+                                <input type="radio" id="star4-<?php echo $product->Product_ID; ?>" name="rating" value="4" onclick="document.getElementById('<?php echo $form; ?>').submit();"/><label for="star4-<?php echo $product->Product_ID; ?>" title="Pretty good">4 stars</label>
+                                <input type="radio" id="star3-<?php echo $product->Product_ID; ?>" name="rating" value="3" onclick="document.getElementById('<?php echo $form; ?>').submit();"/><label for="star3-<?php echo $product->Product_ID; ?>" title="Meh">3 stars</label>
+                                <input type="radio" id="star2-<?php echo $product->Product_ID; ?>" name="rating" value="2" onclick="document.getElementById('<?php echo $form; ?>').submit();"/><label for="star2-<?php echo $product->Product_ID; ?>" title="Kinda bad">2 stars</label>
+                                <input type="radio" id="star1-<?php echo $product->Product_ID; ?>" name="rating" value="1" onclick="document.getElementById('<?php echo $form; ?>').submit();"/><label for="star1-<?php echo $product->Product_ID; ?>" title="Sucks big time">1 star</label>
+                            </fieldset>
+                            <input type="hidden" name="Product_ID" value="<?php echo $product->Product_ID; ?>">
+                        </form>
                     </div>
 
                 <?php endforeach; ?>

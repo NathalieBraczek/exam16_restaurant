@@ -37,8 +37,7 @@ if ($action == 'save')
 {
     if ($repo->save($_POST))
     {
-        print_r($_REQUEST);
-        #header("Location: thankyou.php");
+        header("Location: thankyou.php");
         die;
     }
     else
@@ -66,8 +65,10 @@ if ($action == 'save')
                         Fill in the form at right, and you'll enjoy a pure American environment!
                     <?php endif; ?>
                 </p>
+
             </div>
             <div class="box">
+                <?php print_r($_POST); ?>
                 <h2 class="title">Book a Table</h2>
                 <form action="booking.php?action=save" method="post" enctype="application/x-www-form-urlencoded"
                       class="padding">

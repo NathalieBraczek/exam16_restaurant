@@ -79,7 +79,7 @@ abstract class Repository
      */
     public function getById($id)
     {
-        return $this->getOne("SELECT * FROM {$this->table} WHERE {$this->prefix}ID=" . (int)$id);
+        return $this->getOne("SELECT * FROM `{$this->table}` WHERE `{$this->prefix}ID`=" . (int)$id);
     }
 
     /**
@@ -87,7 +87,7 @@ abstract class Repository
      */
     public function getAll()
     {
-        return $this->getMultiple("SELECT * FROM {$this->table}");
+        return $this->getMultiple("SELECT * FROM `{$this->table}`");
     }
 
     /**
@@ -97,7 +97,7 @@ abstract class Repository
      */
     public function delete($id)
     {
-        return mysqli_query($this->database, "DELETE FROM {$this->table} WHERE {$this->prefix}ID=" . (int)$id);
+        return mysqli_query($this->database, "DELETE FROM `{$this->table}` WHERE `{$this->prefix}ID`=" . (int)$id);
     }
 
     /**
@@ -112,10 +112,10 @@ abstract class Repository
         {
             if (strpos($key, $this->prefix) === 0)
             {
-                $cleaned[$key] = mysqli_escape_string($this->database, $value);
+                $cleaned["`$key`"] = mysqli_escape_string($this->database, $value);
             }
         }
-        if (empty($cleaned["{$this->prefix}ID"]))
+        if (empty($cleaned["`{$this->prefix}ID`"]))
         {
             return $this->insert($cleaned);
         }
@@ -129,12 +129,12 @@ abstract class Repository
      */
     private function insert($entity)
     {
-        unset($entity["{$this->prefix}ID"]);
+        unset($entity["`{$this->prefix}ID`"]);
 
         $columns = implode(',', array_keys($entity));
         $values = "'" . implode("','", array_values($entity)) . "'";
 
-        mysqli_query($this->database, "INSERT INTO {$this->table} ({$columns}) VALUES ($values)");
+        mysqli_query($this->database, "INSERT INTO `{$this->table}` ({$columns}) VALUES ($values)");
         return mysqli_insert_id($this->database);
     }
 
@@ -145,8 +145,8 @@ abstract class Repository
      */
     private function update($entity)
     {
-        $id = (int)$entity["{$this->prefix}ID"];
-        unset($entity["{$this->prefix}ID"]);
+        $id = (int)$entity["`{$this->prefix}ID`"];
+        unset($entity["`{$this->prefix}ID`"]);
 
         $assignments = [];
         foreach ($entity as $key => $value)
@@ -155,7 +155,7 @@ abstract class Repository
         }
         $assignments = implode(',', $assignments);
 
-        mysqli_query($this->database, "UPDATE {$this->table} SET $assignments WHERE {$this->prefix}ID=$id");
+        mysqli_query($this->database, "UPDATE `{$this->table}` SET $assignments WHERE `{$this->prefix}ID`=$id");
         return $id;
     }
 }

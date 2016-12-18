@@ -23,6 +23,6 @@ class DatabaseConnection
      */
     public function connect()
     {
-        return mysqli_connect('', '', '', '');
+        return mysqli_connect('localhost', 'root', '', 'restaurant');
     }
 }

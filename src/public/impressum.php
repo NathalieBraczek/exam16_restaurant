@@ -17,6 +17,10 @@
     <ul>
         <li>Cover photo: https://c2.staticflickr.com/6/5714/20573038010_490c18fa3f_b.jpg</li>
     </ul>
+    <h1>Code Sources</h1>
+    <ul>
+        <li>Pure CSS Rating: https://jsfiddle.net/leaverou/CGP87/</li>
+    </ul>
 </body>
 
 </html>

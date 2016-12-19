@@ -23,6 +23,16 @@ $restriction  = isset($_POST['restriction']) ? $_POST['restriction'] : null;
 $category     = isset($_POST['category']) ? $_POST['category'] : null;
 
 $products = $productsRepo->getFiltered($category, $restriction);
+
+if (isset($_POST['Product_ID']) && isset($products[$_POST['Product_ID']]))
+{
+    if (isset($_POST['rating']) && 1<=$_POST['rating'] && $_POST['rating']<=5)
+    {
+        $productsRepo->setRating($_POST['Product_ID'], $_POST['rating']);
+        $var = 'Product_Rating_' . $_POST['rating'];
+        $products[$_POST['Product_ID']]->$var++;
+    }
+}
 ?>
 <html>
     <head>
@@ -55,7 +65,20 @@ $products = $productsRepo->getFiltered($category, $restriction);
             <div class="container">
                 <?php foreach ($products as $product) : ?>
                     <div class="box<?php echo $product->Product_Special == 1 ? " special" : ""; ?>">
-                        <h2 class="title"><?php echo $product->Product_Title; ?></h2>
+                        <?php
+                        $rating = $productsRepo->getRating($product->Product_ID);
+                        $total  = 0;
+                        $votes   = array_sum($rating);
+                        if ($votes > 0)
+                        {
+                            for ($i=1; $i<=5; ++$i)
+                            {
+                                $total += $i * $rating[$i];
+                            }
+                            $total /= $votes;
+                        }
+                        ?>
+                        <h2 class="title"><?php echo $product->Product_Title; ?> <?php printf("(%.1f of 5 Stars)", $total); ?></h2>
                         <h3 class="padding"><?php echo $product->Product_Restriction . ' ' . $product->Product_Category; ?></h3>
                         <p class="padding">
                             <?php echo $product->Product_Description; ?>

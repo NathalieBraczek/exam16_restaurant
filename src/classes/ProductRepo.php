@@ -74,4 +74,35 @@ class ProductRepo extends Repository
         $sql = "UPDATE products SET Product_Special=1 WHERE Product_ID=" . (int)$id;
         mysqli_query($this->database, $sql);
     }
+
+    /**
+     * @param $id
+     * @param $rating
+     */
+    public function setRating($id, $rating)
+    {
+        $ratingColumn = 'Product_Rating_' . $rating;
+
+        $sql = "UPDATE products SET `$ratingColumn`=`$ratingColumn`+1 WHERE Product_ID=" . (int)$id;
+        mysqli_query($this->database, $sql);
+    }
+
+    /**
+     * @param $id
+     *
+     * @return array
+     */
+    public function getRating($id)
+    {
+        $sql = "SELECT Product_Rating_1, Product_Rating_2, Product_Rating_3, Product_Rating_4, Product_Rating_5 FROM `products` WHERE Product_ID=" . (int)$id;;
+        $raw = $this->getOne($sql);
+
+        return [
+            1 => $raw->Product_Rating_1,
+            2 => $raw->Product_Rating_2,
+            3 => $raw->Product_Rating_3,
+            4 => $raw->Product_Rating_4,
+            5 => $raw->Product_Rating_5,
+        ];
+    }
 }
